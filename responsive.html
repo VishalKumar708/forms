@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container,
+    .container2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* height: 200px; */
+      /* border: 1px solid black; */
+    }
+    p{
+      font-weight: 700;
+    }
+
+    strong{
+      font-weight: lighter;
+    }
+    .container {
+      height: 75vh;
+      margin-bottom: 2%;
+    }
+
+
+    /* .main-container {
+      margin-top: 5%;
+    } */
+
+    .text {
+      text-align: left;
+      width: 60vw;
+      font-size: 2em;
+      height: 65vh;
+    }
+
+    .input-field {
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+      /* box-sizing: border-box; */
+    }
+
+    .button-alignments {
+      position: relative;
+      height: 45px;
+      width: 60vw;
+    }
+    .left-button {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      height: 90%;
+    }
+
+    .center-button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10px;
+      height: 90%;
+    }
+
+    .right-button {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      height: 90%;
+    }
+
+    button {
+      color: white;
+      background-color: black;
+      width: 67px;
+      margin-left: 2em;
+    }
+
+    #progress-bar {
+      width: 100%;
+      height: 9px;
+      background-color: lightgray;
+      margin-bottom: 10px;
+    }
+
+    #fill-progress {
+      height: 100%;
+      background-color: green;
+      transition: width 0.3s ease;
+      width: 0;
+      /* Set initial width to 0 */
+    }
+
+    fieldset {
+      border: none;
+      width: 100%;
+    }
+
+    .main-container {
+      display: block;
+    }
+
+    label {
+      font-size: x-large;
+    }
+
+    input[type="radio"] {
+      transform: scale(1.8);
+    }
+
+    input[type="text"] {
+      width: 200px;
+      /* Adjust the width as desired */
+      height: 40px;
+      /* Adjust the height as desired */
+      font-size: 23px;
+      /* Adjust the font size as desired */
+    }
+
+    input[type="datetime-local"] {
+      width: 200px;
+      /* Adjust the width as desired */
+      height: 40px;
+      /* Adjust the height as desired */
+      font-size: 16px;
+      /* Adjust the font size as desired */
+    }
+
+    .custom-date-input {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 200px;
+      /* Adjust the width as desired */
+      height: 40px;
+      /* Adjust the height as desired */
+      padding: 5px;
+      /* Adjust the padding as desired */
+      font-size: 23px;
+      /* Adjust the font size as desired */
+      border: 1px solid #ccc;
+      /* Optional: Add border styles */
+      border-radius: 5px;
+      /* Optional: Add border radius */
+      /* Additional styling as needed */
+    }
+
+    .radio-container input[type="radio"] {
+      margin-right: 20px;
+      /* Adjust the margin as desired */
+    }
+    .radio-container label {
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+    .radio-container {
+      display: flex;
+      align-items: center;
+    }
+
+    @media screen and (min-width: 300px )and (max-width: 920px) {
+
+
+
+      /* Responsive styles for smartphones */
+      .container {
+        height: auto;
+        font-size: x-large;
+        height: 57vh;
+        width: 100%;
+      }
+      .container2{
+        width: 93vw;
+      }
+      .custom-date-input, input[type='text']{
+        width: 225px;
+        height: 50px;
+      }
+      label {
+        font-size: large;
+        ;
+      }
+
+      .radio-container label {
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .main-container {
+        width: 100vw;
+        height: 70vh;
+
+      }
+
+      .text {
+        text-align: left;
+        font-size: 1em;
+        width: 90vw;
+        height: 50vh;
+      }
+
+      .input-field {
+        width: 80%;
+      }
+
+      fieldset {
+        width: 80vw;
+      }
+
+      .button-alignments {
+        width: 90vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progress-bar">
+    <div id="fill-progress"></div>
+  </div>
+
+  <div class="main-container">
+    <div class="container">
+      <div class="text">
+        <form id="myForm">
+          <fieldset>
+
+            <p>Let us get acquainted. Please let us know your name</p>
+
+            <input type="text" id="name" placeholder="Your Name" oninput="displayUserName(event)" required>
+            <br><br>
+
+          </fieldset>
+          <fieldset>
+            <p>Hi, <strong><span id="enteredName"></span></strong></p>
+            <p>When is your birthdate? Mine is 25.04.2023 (I am a start-up!)</p>
+            <input type="date" id="date_of_birth" class="custom-date-input" placeholder="ENTER BIRTHDAY ON CALENDAR"
+              required>
+            <br><br>
+          </fieldset>
+
+          <!-- <fieldset>
+            <p>That was easy! Now let us get to know your Risk Profile.</p>
+                <p>We will ask you 10 questions, should take about 5-6 minutes. There are no right or wrong responseso these questions. You know yourself the best!</p>
+                <p>Are you ready?</p>
+                <p>Press Enter to Move On</p>
+        </fieldset> -->
+
+          <fieldset class="radio-container">
+            <p>1. What is your Age?</p>
+            <label><input type="radio" name="age" value="Under 25">Under 25</label><br>
+            <label><input type="radio" name="age" value="25 to 34">25 to 34</label><br>
+            <label><input type="radio" name="age" value="35 to 44">35 to 44</label><br>
+            <label><input type="radio" name="age" value="45 to 54">45 to 54</label><br>
+            <label><input type="radio" name="age" value="55 or older">55 or older</label><br>
+          </fieldset>
+
+          <fieldset class="radio-container">
+            <p>2. What is your investment goal?</p>
+            <label><input type="radio" name="goal" value="Capital preservation">Capital preservation</label><br>
+            <label><input type="radio" name="goal" value="Income">Income</label><br>
+            <label><input type="radio" name="goal" value="Balance growth and income">Balance growth and
+              income</label><br>
+            <label><input type="radio" name="goal" value="High growth">High growth</label><br>
+          </fieldset>
+
+          <fieldset class="radio-container">
+            <p>3. How long do you expect to invest before withdrawing money?</p>
+            <label><input type="radio" name="invest" value="Less than 2 years">Less than 2 years</label><br>
+            <label><input type="radio" name="invest" value="2 to 5 years">2 to 5 years</label><br>
+            <label><input type="radio" name="invest" value="5 to 10 years">5 to 10 years</label><br>
+            <label><input type="radio" name="invest" value="More than 10 years">More than 10 years</label><br>
+          </fieldset class="radio-container">
+
+          <fieldset class="radio-container">
+            <p>4. How would you react in the following scenarios?</p>
+            <p>(a) If your investments fall by 20% due to a market-wide downturn?</p>
+            <label><input type="radio" name="scenario1" value="Sell all my investments">Sell all my
+              investments</label><br>
+            <label><input type="radio" name="scenario1" value="Sell some">Sell some</label><br>
+            <label><input type="radio" name="scenario1" value="Hold on to my investments">Hold on to my
+              investments</label><br>
+            <label><input type="radio" name="scenario1" value="Invest more">Invest more</label><br><br><br>
+
+
+          </fieldset>
+          <fieldset class="radio-container">
+            <p>(b) If your investments fall by 20% due to issues specific to the sector you’re holding?</p>
+            <label><input type="radio" name="scenario2" value="Sell all my investments">Sell all my
+              investments</label><br>
+            <label><input type="radio" name="scenario2" value="Sell some">Sell some</label><br>
+            <label><input type="radio" name="scenario2" value="Hold on to my investments">Hold on to my
+              investments</label><br>
+            <label><input type="radio" name="scenario2" value="Investigate further before deciding">Investigate further
+              before deciding</label><br>
+          </fieldset>
+          <fieldset class="radio-container">
+            <p>5. How would you describe your knowledge of investments?</p>
+            <label><input type="radio" name="knowledge" value="Beginner">Beginner</label><br>
+            <label><input type="radio" name="knowledge" value="Intermediate">Intermediate</label><br>
+            <label><input type="radio" name="knowledge" value="Advanced">Advanced</label><br>
+          </fieldset>
+          <fieldset class="radio-container">
+            <p>6. How do you feel about potentially losing money in the short term for the possibility of higher returns
+              in the long term?</p>
+            <label><input type="radio" name="losing_money" value="Very uncomfortable">Very uncomfortable</label><br>
+            <label><input type="radio" name="losing_money" value="Somewhat uncomfortable">Somewhat
+              uncomfortable</label><br>
+            <label><input type="radio" name="losing_money" value="Neutral">Neutral</label><br>
+            <label><input type="radio" name="losing_money" value="Comfortable">Comfortable</label><br>
+          </fieldset>
+          <fieldset class="radio-container">
+            <p>7. How important is it to for you to preserve your capital, even if it means potentially lower returns?
+            </p>
+            <label><input type="radio" name="important" value="Very important">Very important</label><br>
+            <label><input type="radio" name="important" value="Somewhat important">Somewhat important</label><br>
+            <label><input type="radio" name="important" value="Neutral">Neutral</label><br>
+            <label><input type="radio" name="important" value="Not important">Not important</label><br>
+          </fieldset>
+          <fieldset class="radio-container">
+            <p>8. What is your primary income source (excluding investments)?</p>
+            <label><input type="radio" name="primary_income"
+                value="Unstable (frequent job changes, no stable income)">Unstable (frequent job changes, no stable
+              income)</label><br>
+            <label><input type="radio" name="primary_income" value="Stable (employed or retirement income)">Stable
+              (employed or retirement income)</label><br>
+            <label><input type="radio" name="primary_income"
+                value="Somewhat stable (self-employed or contractual)">Somewhat stable (self-employed or
+              contractual)</label><br>
+          </fieldset>
+
+
+        </form>
+      </div>
+
+
+
+    </div>
+    <div class="container2">
+      <div class="button-alignments">
+        <button onclick="previousPage()" id="previousBtn" style="display: none;" class="left-button">Previous</button>
+        <button onclick="submitForm()" id="submitBtn" style="display: none"class="center-button">Submit</button>
+        <button onclick="nextPage()" id="nextBtn" class="right-button">Next</button>
+      </div>
+    </div>
+
+    <script>
+      var progress = 0;  // Current progress value
+      var currentPage = 0;  // Current page index
+
+      var formPages = document.querySelectorAll('fieldset');
+      var progressBar = document.getElementById("fill-progress");
+      var previousBtn = document.getElementById("previousBtn");
+      var nextBtn = document.getElementById("nextBtn");
+      var submitBtn = document.getElementById("submitBtn");
+
+      function nextPage() {
+        var currentFieldset = formPages[currentPage];
+        var inputs = currentFieldset.querySelectorAll('input');
+        var isFormValid = true;
+
+        // Check if all inputs on the current page are filled
+        for (var i = 0; i < inputs.length; i++) {
+          if ((inputs[i].type === "radio" && !isRadioSelected(inputs[i].name)) || (inputs[i].type !== "radio" && !inputs[i].value)) {
+            isFormValid = false;
+            break;
+          }
+        }
+
+        if (isFormValid) {
+          if (currentPage < formPages.length - 1) {
+            currentPage++;
+            showCurrentPage();
+            updateProgressBar();
+            focusOnNextInput();
+          }
+
+          if (currentPage === formPages.length - 1) {
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "block";
+          } else {
+            nextBtn.style.display = "block";
+            submitBtn.style.display = "none";
+          }
+
+          if (currentPage > 0) {
+            previousBtn.style.display = "block";
+          }
+        } else {
+          alert("Please fill in all fields.");
+        }
+      }
+
+      function previousPage() {
+        if (currentPage > 0) {
+          currentPage--;
+          showCurrentPage();
+          updateProgressBar();
+          focusOnCurrentInput();
+        }
+
+        if (currentPage === 0) {
+          previousBtn.style.display = "none";
+        } else {
+          previousBtn.style.display = "block";
+        }
+
+        nextBtn.style.display = "block";
+        submitBtn.style.display = "none";
+      }
+
+      function calculateProgress() {
+        var filledFields = 0;
+        var totalFields = 0;
+
+        for (var i = 0; i < formPages.length; i++) {
+          var inputs = formPages[i].querySelectorAll('input');
+          totalFields += inputs.length;
+
+          for (var j = 0; j < inputs.length; j++) {
+            if ((inputs[j].type === "radio" && isRadioSelected(inputs[j].name)) || (inputs[j].type !== "radio" && inputs[j].value)) {
+              filledFields++;
+            }
+          }
+        }
+
+        return (filledFields / totalFields) * 100;
+      }
+
+      function isRadioSelected(name) {
+        var radioButtons = document.getElementsByName(name);
+        for (var i = 0; i < radioButtons.length; i++) {
+          if (radioButtons[i].checked) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function updateProgressBar() {
+        progress = calculateProgress();
+        progressBar.style.width = progress + "%";
+      }
+
+      function showCurrentPage() {
+        for (var i = 0; i < formPages.length; i++) {
+          if (i === currentPage) {
+            formPages[i].style.display = "block";
+          } else {
+            formPages[i].style.display = "none";
+          }
+        }
+      }
+
+      function focusOnNextInput() {
+        var currentFieldset = formPages[currentPage];
+        var inputs = currentFieldset.querySelectorAll('input');
+        if (inputs.length > 0) {
+          inputs[0].focus();
+        }
+      }
+
+      function focusOnCurrentInput() {
+        var currentFieldset = formPages[currentPage];
+        var inputs = currentFieldset.querySelectorAll('input');
+        var lastInputIndex = inputs.length - 1;
+        if (lastInputIndex >= 0) {
+          inputs[lastInputIndex].focus();
+        }
+      }
+
+      function submitForm() {
+        var currentFieldset = formPages[currentPage];
+        var inputs = currentFieldset.querySelectorAll('input');
+        var isFormValid = true;
+
+        // Check if all inputs on the last page are filled
+        for (var i = 0; i < inputs.length; i++) {
+          if ((inputs[i].type === "radio" && !isRadioSelected(inputs[i].name)) || (inputs[i].type !== "radio" && !inputs[i].value)) {
+            isFormValid = false;
+            break;
+          }
+        }
+
+        if (isFormValid) {
+          updateProgressBar();
+
+          // Perform form submission logic here
+          alert("Form submitted successfully!");
+        } else {
+          alert("Please fill in all fields.");
+        }
+      }
+
+      // Add event listener to input fields to handle Enter key press
+      var inputFields = document.querySelectorAll('input');
+      for (var i = 0; i < inputFields.length; i++) {
+        inputFields[i].addEventListener('keydown', function (event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            nextPage();
+          }
+        });
+      }
+
+      // Initialize the form
+      showCurrentPage();
+      updateProgressBar();
+      focusOnNextInput();
+      function displayUserName(event) {
+        // Get the user name from the input field
+        var nameInput = event.target.value;
+
+        // Set the user name as the content of the paragraph
+        var enteredName = document.getElementById("enteredName");
+        enteredName.textContent = nameInput;
+      }
+    </script>
+
+  </div>
+</body>
+
+</html>
